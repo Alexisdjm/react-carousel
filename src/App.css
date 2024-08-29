@@ -1,38 +1,179 @@
-.App {
-  text-align: center;
+body {
+    background-color: rgb(27, 28, 30);
+    overflow-x: hidden;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.slider-father {
+    padding: 4em 2em;
+    display: flex;
+    justify-content: center;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
+.slider-son {
+    width: 80vw;
+    max-width: 1300px;
+}
+
+.card-container {
+    aspect-ratio: 2/3;
+    width: clamp(275px, 10vw, 400px);
+    position: relative;
+    overflow: hidden;
+    border-radius: 15px;
+    margin: 0 1em;
+    z-index: 3;
+}
+
+.movie-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.card-description {
+    position: absolute;
+    height: 0%;
+    background: linear-gradient(to top, rgba(0, 0, 0, 1) 10%, rgba(0, 0, 0, 0));
+    cursor:default;
+    display: flex;
+    flex-direction: column;
+    justify-content: end;
+    align-items: center;
+    bottom: 0;
+}
+
+.card-description p {
+    color: #fff;
+    font-size: 8px;
+    text-align: center;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    -webkit-line-clamp: 3; 
+    text-overflow: ellipsis;
+    height: fit-content;
+    line-height: 7px;
+    max-width: 65%;
+}
+
+.card-description img {
+    position: relative;
+}
+
+.card-container:hover .card-description {
+    animation: expandGradient 0.5s forwards;
+}
+
+.name--pic {
+    max-width: 45%;
+}
+
+@keyframes expandGradient {
+    from {
+      height: 0;
+    }
+    to {
+      height: 60%;
+    }
   }
+
+.header-father {
+    width: 100%;
+    border-bottom: 0.5px solid rgb(76, 75, 75);
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.header-flex-son {
+    display: flex;
+    justify-content: center;
+    padding: 1em 0;
 }
 
-.App-link {
-  color: #61dafb;
+.cinema-pic-box {
+    width: clamp(200px,20vw, 300px)
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cinema-pic {
+    width: 100%;
+    height: 100%;
+}
+
+.arrow-pic {
+    aspect-ratio: 1/1;
+    width: 25px;
+}
+
+.custom-btn {
+    border: none;
+    display: flex;
+    aspect-ratio: 1/1;
+    border-radius: 50%;
+    backdrop-filter: blur(8px);
+    background: #00000080;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    opacity: 0.5;
+    width: 55px;
+    top: 50%;
+}
+
+.custom-btn.right {
+    left: 6vw
+}
+
+.custom-btn.left {
+    right: 6vw;
+}
+
+.custom-btn:hover {
+    animation: opac 2.5s infinite;
+}
+
+@keyframes opac {
+    0% {
+        opacity: 0.5
+    }
+    50% {
+        opacity: 1
+    }
+    100% {
+        opacity: 0.5
+    }
+}
+
+@media only screen and (max-width: 463px) {
+    .slider-son {
+        width: calc(80vw - (100vw - 390px));
+    }
+}
+
+@media only screen and (min-width: 464px) and (max-width: 767px) {
+    .card-container {
+        width: clamp(325px, 10vw, 375px);
+    }
+    
+    .slider-son {
+        width: 67vw;
+    }
+}
+
+@media only screen and (max-width: 900px) {
+    .custom-btn {
+        display: none;
+    }
+}
+
+@media only screen and (min-width: 901px) and (max-width: 1024px) {
+    .card-container {
+        width: clamp(250px, 10vw, 375px);
+    }
+
+    .slider-son {
+        width: 90vw
+    }
+}
+
+@media only screen and (min-height: 1000px) and (min-width: 901px){
+    .custom-btn {
+        display: none;
+    }
 }
